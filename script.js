@@ -58,7 +58,7 @@ const timerEl = document.getElementById("timer");
 
 let answered = false;
 let timer;
-let timeLeft = 600; // 10 minutos
+let timeLeft = 300; // 5 minutos
 
 function renderQuestions() {
   if (localStorage.getItem("quizTaken")) {
