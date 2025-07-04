@@ -61,9 +61,10 @@ let timer;
 let timeLeft = 600; // 10 minutos
 
 function renderQuestions() {
-  if (sessionStorage.getItem("quizTaken")) {
-    form.innerHTML = "<p>Ya has realizado este cuestionario.</p>";
+  if (localStorage.getItem("quizTaken")) {
+    form.innerHTML = "<p><strong>Ya has realizado este cuestionario.</strong></p>";
     submitBtn.style.display = "none";
+    timerEl.style.display = "none";
     return;
   }
 
@@ -93,8 +94,10 @@ function showResult() {
   });
   const incorrect = questions.length - correct;
   result.innerHTML = `✅ Aciertos: ${correct} | ❌ Errores: ${incorrect}`;
-  sessionStorage.setItem("quizTaken", true);
+  localStorage.setItem("quizTaken", true);
   submitBtn.disabled = true;
+  clearInterval(timer);
+  timerEl.style.display = "none";
 }
 
 function startTimer() {
@@ -117,7 +120,6 @@ submitBtn.addEventListener("click", (e) => {
   if (!answered) {
     showResult();
     answered = true;
-    clearInterval(timer);
   }
 });
 
