@@ -108,7 +108,7 @@ const timerEl = document.getElementById("timer");
 
 let answered = false;
 let timer;
-let timeLeft = questions.length * 30; // 30 segundos por cada pregunta
+let timeLeft = 600; // 10 minutos
 
 function renderQuestions() {
   if (sessionStorage.getItem("quizTaken")) {
